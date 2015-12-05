@@ -16,7 +16,9 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    apiHost: 'http://192.168.1.102:4000'
   };
 
   if (environment === 'development') {
@@ -42,6 +44,17 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self'",
+    'connect-src': "'self' " + ENV.apiHost,
+    'img-src': "'self'",
+    'style-src': "'self'",
+    'media-src': "'self'"
+  };
+
 
   return ENV;
 };
