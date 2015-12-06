@@ -1,0 +1,9 @@
+<div>
+  {{#each model as |city|}}
+      <div>
+        {{city.name}} has {{city.population}} citizens
+      </div>
+  {{/each}}
+</div>
+
+{{outlet}}
